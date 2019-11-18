@@ -10,6 +10,9 @@ public class WizardRepository {
     private final static String DB_USER = "h4rryp0tt3r";
     private final static String DB_PASSWORD = "Horcrux4life!";
 
+    
+    
+    
     public Wizard update(Long id, String firstName, String lastName, Date birthday,
                          String birthPlace, String biography, boolean muggle) {
 
@@ -39,6 +42,9 @@ public class WizardRepository {
         return null;
     }
 
+    
+    
+    
     public Wizard findById(Long id) {
 
         try {

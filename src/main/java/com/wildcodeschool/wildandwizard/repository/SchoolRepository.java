@@ -12,10 +12,39 @@ public class SchoolRepository {
 
     public School update(Long id, String name, Long capacity, String country) {
 
+    	
+        // TODO : update a school from the database    	
+    	try {
+    		  Connection connection = DriverManager.getConnection(
+    				  DB_URL, DB_USER, DB_PASSWORD
+    				  );
+    		  PreparedStatement statement = connection.prepareStatement(
+    				  "UPDATE school SET name=?, capacity=?, country=? WHERE id=?"
+    				  );
+    		  
+    		  statement.setString(1, name);
+    		  statement.setLong(2,   capacity);
+    		  statement.setString(3, country);
+    		  statement.setLong(4, id);
+
+    		  if (statement.executeUpdate() != 1) {
+    			  throw new SQLException("failed to update data");
+    		  }
+    		  
+    		  return new School(id, name, capacity, country);
+    	} 
+    	catch (SQLException e) {
+    		e.printStackTrace();
+    	}
         // TODO : update a school from the database
+    	
+    	
         return null;
     }
 
+    
+        
+    
     public School findById(Long id) {
 
         try {
